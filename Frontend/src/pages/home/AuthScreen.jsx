@@ -135,6 +135,27 @@ return (
 				</div>
 			</div>
 
+			<div className='h-2 w-full bg-[#232323]' aria-hidden='true' />
+			<div className='py-10 bg-black text-white'>
+				<div className="flex max-w-6xl mx-auto items-center justify-center md:flex-row flex-col-reverse px-4 md:px-2 gap-10">
+					{/* left side */}
+					<div className='flex-1 relative'>
+						<div className='relative'>
+							<img src='/kids.png' alt='Kids image' className='mt-4' />
+						</div>
+					</div>
+
+					{/* right side */}
+					<div className='flex-1 md:text-left text-center'>
+						<h2 className='text-4xl md:text-5xl font-extrabold mb-4 text-balance'>Create profiles for kids</h2>
+						<p className='text-lg md:text-l'>
+							Send kids on adventures with their favorite characters in a space made just for them.
+						</p>
+					</div>
+				</div>
+
+			</div>
+			
 
 
 
