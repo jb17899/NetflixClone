@@ -33,7 +33,7 @@ const SearchHistoryPage = () => {
 
 	const handleDelete = async (entry) => {
 		try {
-			await axios.delete(`http://localhost:5000/api/v1/search/history/${entry.id}`, {
+			await axios.delete(`/api/v1/search/history/${entry.id}`, {
 				withCredentials: true
 			});
 
