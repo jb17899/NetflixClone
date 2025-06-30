@@ -12,7 +12,7 @@ const MovieSlider = (props) => {
     useEffect(() => {
     const getContent = async () => {
     try{
-      const res = await axios.get(`http://localhost:5000/api/v1/${contentType}/${props.category}`,{
+      const res = await axios.get(`/api/v1/${contentType}/${props.category}`,{
         withCredentials: true
       });
       setContent(res.data.content);
