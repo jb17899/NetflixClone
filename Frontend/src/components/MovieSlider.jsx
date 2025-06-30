@@ -8,6 +8,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const MovieSlider = (props) => {
   const [content, setContent] = React.useState([]);
   const {contentType} = useContentStore();
+	const formattedCategoryName =
+		props.category.replaceAll("_", " ")[0].toUpperCase() + props.category.replaceAll("_", " ").slice(1);
   const [showArrow, setShowArrow] = React.useState(false);
     useEffect(() => {
     const getContent = async () => {
@@ -41,7 +43,7 @@ const MovieSlider = (props) => {
       onMouseLeave={() => setShowArrow(false)}
     >
       <h2 className='mb-4 text-2xl font-bold'>
-        {props.category} {formattedType}
+        {formattedCategoryName} {formattedType}
       </h2>
 
       <div
