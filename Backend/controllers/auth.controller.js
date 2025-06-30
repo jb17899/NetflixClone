@@ -21,11 +21,6 @@ export async function signup(req,res){
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password,salt);
 
-
-
-
-
-
         const ProfilePics = ["./avatar1.png","/avatar2.png","/avatar3.png"];
         const image = ProfilePics[Math.floor(Math.random()*ProfilePics.length)];
         const newUser = new user({
@@ -37,6 +32,7 @@ export async function signup(req,res){
         if(newUser){
             genTokenandSetCookie(newUser._id,res);
             await newUser.save();
+
             res.status(201).json({
                 success:true,
                 user:{
@@ -55,7 +51,6 @@ export async function signup(req,res){
 
     }
     catch(error){
-        console.log(error.message);
         res.status(500).json({success:false,message:"Internal server error"});
 
     }
@@ -69,25 +64,24 @@ export async function login(req,res){
             return res.status(400).json({success:false,message:"All fields required"});
         }
         const newUser = await user.findOne({email:email});
-        if(!user){
+        if(!newUser){
             return res.status(404).json({success:false,message:"Invalid credentials"})
         }
         const isPasswordCorrect = await bcrypt.compare(password,newUser.password);
         if(!isPasswordCorrect){
             return res.status(400).json({success:false,message:"invalid cred"});
         }
-        genTokenandSetCookie(user._id,res);
+         genTokenandSetCookie(newUser._id,newUser,res);
         res.status(200).json({
             success:true,
             user:{
-                ...user._doc,
+                ...newUser._doc,
                 password:""
             }
         })
 
     }
     catch(error){
-        console.log(error);
         res.status(400).json({
             siccess:false,
             message:"some error"
@@ -102,4 +96,12 @@ export async function logout(req,res){
         console.log(error);
         res.status(500).json({success:false,message:"internal server error"});
     }
+}
+export async function authCheck(req, res) {
+	try {
+		res.status(200).json({ success: true, user: req.user });
+	} catch (error) {
+		console.log("Error in authCheck controller", error.message);
+		res.status(500).json({ success: false, message: "Internal server error" });
+	}
 }
