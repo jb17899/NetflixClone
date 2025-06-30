@@ -20,7 +20,7 @@ const SearchHistoryPage = () => {
 	useEffect(() => {
 		const getSearchHistory = async () => {
 			try {
-				const res = await axios.get(`http://localhost:5000/api/v1/search/history`, {
+				const res = await axios.get(`/api/v1/search/history`, {
 					withCredentials: true
 				});
 				setSearchHistory(res.data.content);
