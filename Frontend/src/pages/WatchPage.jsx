@@ -40,7 +40,7 @@ const WatchPage = () => {
     useEffect(()=>{
       const getTrailers = async()=>{
         try{
-        const response = await axios.get(`http://localhost:5000/api/v1/${contentType}/${id}/trailers`,{withCredentials:true});
+        const response = await axios.get(`/api/v1/${contentType}/${id}/trailers`,{withCredentials:true});
         setTrailers(response.data.trailers);
         }
         catch(err){
@@ -54,7 +54,7 @@ const WatchPage = () => {
     useEffect(()=>{
       const getSimilar = async()=>{
         try{
-        const response = await axios.get(`http://localhost:5000/api/v1/${contentType}/${id}/similar`,{withCredentials:true});
+        const response = await axios.get(`/api/v1/${contentType}/${id}/similar`,{withCredentials:true});
         // console.log(response.data);
         setSimilarContent(response.data.similar);
         }
@@ -70,7 +70,7 @@ const WatchPage = () => {
     useEffect(()=>{ 
       const getContent = async()=>{
         try{
-        const response = await axios.get(`http://localhost:5000/api/v1/${contentType}/${id}/details`,{withCredentials:true});
+        const response = await axios.get(`/api/v1/${contentType}/${id}/details`,{withCredentials:true});
         setContent(response.data.content);
         setLoading(false);
         }
