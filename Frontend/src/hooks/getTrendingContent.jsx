@@ -5,11 +5,10 @@ import axios from 'axios';
 const getTrendingContent = () => {
    const [trendingContent, setTrendingContent] = useState(null);
   const {contentType} = useContentStore();
-  const prefix = "http://localhost:5000";
   useEffect(() => {
     const fetchTrendingContent = async () => {
       try {
-      const response = await axios.get(prefix+`/api/v1/${contentType}/trending`, {
+      const response = await axios.get(`/api/v1/${contentType}/trending`, {
         withCredentials: true
       });
         setTrendingContent(response.data);
