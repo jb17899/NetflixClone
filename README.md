@@ -80,15 +80,6 @@ TMDB_API_KEY=your_tmdb_api_key
 NODE_ENV=development
 ```
 
-Adjust paths if you’re using a different DB or secrets.
-
----
-
-## 🖼️ Screenshots
-
-> _(Add screenshots of your UI here)_
-
----
 
 ## 📦 Production Build
 
